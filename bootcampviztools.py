@@ -367,3 +367,15 @@ def plot_multiple_boxplots(df, columns, dim_matriz_visual = 2):
 
     plt.tight_layout()
     plt.show()
+
+
+def plot_histrograma(df, category, numeric):
+    plt.figure(figsize=(6, 3))  # El tamaño se puede ajustar
+    num_columnas = 3
+    filas = (len(numeric) + num_columnas - 1) // num_columnas 
+    for valor in df[category].unique():  
+        sns.histplot(df.loc[df[category] == valor, numeric], kde=True, label=valor)
+    plt.legend()
+    plt.xlabel(numeric)
+    plt.title(f'Histograma de {numeric}')
+    plt.show()
